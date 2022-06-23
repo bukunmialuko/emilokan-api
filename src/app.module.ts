@@ -1,10 +1,12 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { EventModule } from './event/event.module';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
+import { EventSubscriptionModule } from './event_subscription/event_subscription.module';
+import { SubscriptionModule } from './subscription/subscription.module';
+import { ReviewModule } from './review/review.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [EventModule, AuthModule, UserModule, EventSubscriptionModule, SubscriptionModule, ReviewModule],
 })
 export class AppModule {}

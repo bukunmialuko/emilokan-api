@@ -3,13 +3,16 @@ package com.plunex.emilokan.modules.user;
 
 import com.plunex.emilokan.modules.audit.AuditModel;
 import com.plunex.emilokan.modules.event.Event;
+import com.plunex.emilokan.modules.role.Role;
 import com.plunex.emilokan.modules.subscription.Subscription;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.lang.NonNull;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -61,5 +64,13 @@ public class User extends AuditModel {
 
     @OneToMany(mappedBy = "user")
     private Collection<Subscription> subscriptions;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}
+    )
+    private List<Role> roles = new ArrayList<>();
 
 }

@@ -1,6 +1,8 @@
 package com.plunex.emilokan.modules.subscription;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.plunex.emilokan.modules.audit.AuditModel;
 import com.plunex.emilokan.modules.event.Event;
 import com.plunex.emilokan.modules.user.User;
 import jakarta.persistence.*;
@@ -17,7 +19,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity
 @Table
-public class Subscription {
+public class Subscription extends AuditModel {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -28,11 +30,13 @@ public class Subscription {
     private UUID id;
 
 
+    @JsonIgnore
     @ManyToOne()
     @JoinColumn(name = "user_id")
     private User user;
 
 
+    @JsonIgnore
     @ManyToOne()
     @JoinColumn(name = "event_id")
     private Event event;

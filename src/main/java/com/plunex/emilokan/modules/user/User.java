@@ -1,6 +1,7 @@
 package com.plunex.emilokan.modules.user;
 
 
+import com.plunex.emilokan.modules.audit.AuditModel;
 import com.plunex.emilokan.modules.event.Event;
 import com.plunex.emilokan.modules.subscription.Subscription;
 import jakarta.persistence.*;
@@ -18,7 +19,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity
 @Table
-public class User {
+public class User extends AuditModel {
 
     @Id
     @GeneratedValue(generator = "UUID")

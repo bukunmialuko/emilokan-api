@@ -9,4 +9,6 @@ public interface ISubscriptionService {
 
     SubscriptionResponse subscribeToEvent(SubscriptionRequest request);
 
+    // Get queue status
+    // Move to next on queue
 }

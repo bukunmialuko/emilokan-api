@@ -31,6 +31,8 @@ public class SubscriptionService implements ISubscriptionService {
         User user = userService.getById(request.getUserId());
         Event event = eventService.getById(request.getEventId());
 
+        // If event has not ended, then user can subscribe.
+
         Subscription subscription = new Subscription();
         subscription.setUser(user);
         subscription.setEvent(event);

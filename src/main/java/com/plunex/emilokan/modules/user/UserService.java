@@ -33,12 +33,13 @@ public class UserService implements IUserService {
     public UserResponse getUserResponseById(String userId) {
         User existingUser = getById(userId);
 
-        return new UserResponse(
-                existingUser.getFirstName(),
-                existingUser.getLastName(),
-                existingUser.getUserName(),
-                existingUser.getPhoneNumber(),
-                existingUser.getEmail());
+        UserResponse response = new UserResponse();
+        response.setFirstName(existingUser.getFirstName());
+        response.setLastName(existingUser.getLastName());
+        response.setEmail(existingUser.getEmail());
+        response.setUserName(existingUser.getUserName());
+
+        return response;
     }
 
     @Override
@@ -54,11 +55,12 @@ public class UserService implements IUserService {
 
         User savedUser = userRepository.save(newUser);
 
-        return new UserResponse(
-                savedUser.getFirstName(),
-                savedUser.getLastName(),
-                savedUser.getUserName(),
-                savedUser.getPhoneNumber(),
-                savedUser.getEmail());
+        UserResponse response = new UserResponse();
+        response.setFirstName(savedUser.getFirstName());
+        response.setLastName(savedUser.getLastName());
+        response.setEmail(savedUser.getEmail());
+        response.setUserName(savedUser.getUserName());
+
+        return response;
     }
 }

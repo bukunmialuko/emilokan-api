@@ -1,4 +1,4 @@
-package com.plunex.emilokan.modules.role.dto;
+package com.plunex.emilokan.modules.auth.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
